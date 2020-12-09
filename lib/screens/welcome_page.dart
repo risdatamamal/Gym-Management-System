@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_gym_manager/screens/login_page.dart';
+import 'package:my_gym_manager/screens/signup_page.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -73,7 +75,14 @@ class WelcomePage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60.0,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ),
+                        );
+                      },
                       color: Color(0xFFC9C7F1),
                       shape: RoundedRectangleBorder(
                           side: BorderSide(
@@ -116,7 +125,14 @@ class WelcomePage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60.0,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignupPage(),
+                          ),
+                        );
+                      },
                       color: Colors.purple[200],
                       elevation: 0.0,
                       shape: RoundedRectangleBorder(
