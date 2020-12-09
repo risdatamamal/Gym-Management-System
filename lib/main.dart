@@ -8,6 +8,7 @@ void main() {
       theme: ThemeData(
         fontFamily: 'OpenSans-Regular',
         scaffoldBackgroundColor: const Color(0xFFF1F9FD),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: WelcomePage(),
     ),
