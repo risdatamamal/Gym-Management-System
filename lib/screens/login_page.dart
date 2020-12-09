@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_gym_manager/animation/fade_animation.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -33,22 +34,28 @@ class LoginPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text(
-                          'LOGIN',
-                          style: TextStyle(
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.bold,
+                        FadeAnimation(
+                          1.0,
+                          Text(
+                            'LOGIN',
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         SizedBox(
                           height: 20.0,
                         ),
-                        Text(
-                          'Login to your GYM',
-                          style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
+                        FadeAnimation(
+                          1.2,
+                          Text(
+                            'Login to your GYM',
+                            style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ],
@@ -57,56 +64,65 @@ class LoginPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 40.0),
                       child: Column(
                         children: [
-                          makeInput(
-                            lable: 'Email',
+                          FadeAnimation(
+                            1.3,
+                            makeInput(
+                              lable: 'Email',
+                            ),
                           ),
-                          makeInput(
-                            lable: 'Password',
-                            obscureText: true,
+                          FadeAnimation(
+                            1.4,
+                            makeInput(
+                              lable: 'Password',
+                              obscureText: true,
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 40.0,
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.only(
-                          top: 3.0,
+                    FadeAnimation(
+                      1.5,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 40.0,
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50.0),
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.black,
-                            ),
-                            top: BorderSide(
-                              color: Colors.black,
-                            ),
-                            left: BorderSide(
-                              color: Colors.black,
-                            ),
-                            right: BorderSide(
-                              color: Colors.black,
-                            ),
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            top: 3.0,
                           ),
-                        ),
-                        child: MaterialButton(
-                          minWidth: double.infinity,
-                          height: 60.0,
-                          onPressed: () {},
-                          color: Color(0xFFC9C7F1),
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            border: Border(
+                              bottom: BorderSide(
                                 color: Colors.black,
                               ),
-                              borderRadius: BorderRadius.circular(50.0)),
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18.0,
+                              top: BorderSide(
+                                color: Colors.black,
+                              ),
+                              left: BorderSide(
+                                color: Colors.black,
+                              ),
+                              right: BorderSide(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          child: MaterialButton(
+                            minWidth: double.infinity,
+                            height: 60.0,
+                            onPressed: () {},
+                            color: Color(0xFFC9C7F1),
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0)),
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18.0,
+                              ),
                             ),
                           ),
                         ),
@@ -115,31 +131,37 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 10.0,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Don\'t have an account? ',
-                        ),
-                        Text(
-                          'Sign up',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18.0,
+                    FadeAnimation(
+                      1.6,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don\'t have an account? ',
                           ),
-                        )
-                      ],
+                          Text(
+                            'Sign up',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18.0,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/gym_club_fitness_center-512.png'),
-                    fit: BoxFit.fitHeight,
+              FadeAnimation(
+                1.7,
+                Container(
+                  height: MediaQuery.of(context).size.height / 3,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/gym_club_fitness_center-512.png'),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
               ),
