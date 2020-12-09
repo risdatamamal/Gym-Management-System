@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_gym_manager/screens/welcome_page.dart';
+import 'package:my_gym_manager/screens/login_page.dart';
 
 void main() {
   runApp(
@@ -9,7 +9,7 @@ void main() {
         fontFamily: 'OpenSans-Regular',
         scaffoldBackgroundColor: const Color(0xFFF1F9FD),
       ),
-      home: WelcomePage(),
+      home: LoginPage(),
     ),
   );
 }
