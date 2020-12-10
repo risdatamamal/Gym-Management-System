@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
+import 'package:my_gym_manager/config/palette.dart';
 
 class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.primaryColor,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         elevation: 0,
