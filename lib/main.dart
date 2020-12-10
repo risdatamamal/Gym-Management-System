@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_gym_manager/screens/bottom_nav_bar.dart';
 import 'package:my_gym_manager/screens/welcome_page.dart';
 
 void main() {
@@ -10,7 +11,7 @@ void main() {
         scaffoldBackgroundColor: const Color(0xFFF1F9FD),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WelcomePage(),
+      home: BottomNavBar(),
     ),
   );
 }
