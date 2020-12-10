@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/screens/bottom_nav_bar.dart';
-import 'package:my_gym_manager/screens/welcome_page.dart';
 
 void main() {
   runApp(
