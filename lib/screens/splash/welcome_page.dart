@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
 import 'package:my_gym_manager/config/palette.dart';
-import 'package:my_gym_manager/screens/login_page.dart';
-import 'package:my_gym_manager/screens/signup_page.dart';
+import 'package:my_gym_manager/screens/login/login_page.dart';
+import 'package:my_gym_manager/screens/signup/signup_page.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
