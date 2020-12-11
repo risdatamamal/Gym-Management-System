@@ -65,6 +65,37 @@ class _MembersScreenState extends State<MembersScreen> {
                 ),
               ),
             ),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Palette.secondaryColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40.0),
+                  topRight: Radius.circular(40.0),
+                ),
+              ),
+              child: FlatButton(
+                onPressed: () => {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.white,
+                      size: 40.0,
+                    ),
+                    Text(
+                      'Add Member',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
