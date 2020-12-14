@@ -4,7 +4,9 @@ import 'package:my_gym_manager/config/palette.dart';
 class CustomCardRE extends StatelessWidget {
   final String imagePath;
   final String type;
-  CustomCardRE(this.imagePath, this.type);
+  final Function add;
+  final Function view;
+  CustomCardRE(this.imagePath, this.type, this.add, this.view);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +34,7 @@ class CustomCardRE extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),
-            onPressed: () => {},
+            onPressed: view,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -57,7 +59,7 @@ class CustomCardRE extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),
-            onPressed: () => {},
+            onPressed: add,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

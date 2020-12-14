@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/screens/equipments/equipments_screen.dart';
 import 'package:my_gym_manager/screens/home/home_screen.dart';
+import 'package:my_gym_manager/screens/income_expenses/inc_exp_screen.dart';
 import 'package:my_gym_manager/screens/members/members_screen.dart';
-import 'package:my_gym_manager/screens/revenue_expenses/rev_exp_screen.dart';
 import 'package:my_gym_manager/screens/trainers/trainers_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -16,7 +16,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     MembersScreen(),
     HomeScreen(),
     EquipmentsScreen(),
-    RevExpScreen(),
+    IncExpScreen(),
   ];
 
   int _currentIndex = 2;
