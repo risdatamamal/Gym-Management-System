@@ -3,19 +3,19 @@ import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
 
-class AddEquipments extends StatefulWidget {
+class AddExpense extends StatefulWidget {
   @override
-  _AddEquipmentsState createState() => _AddEquipmentsState();
+  _AddExpenseState createState() => _AddExpenseState();
 }
 
-class _AddEquipmentsState extends State<AddEquipments> {
+class _AddExpenseState extends State<AddExpense> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(Icons.arrow_back_ios, () {
         Navigator.pop(context);
-      }, 'Add Equipments'),
+      }, 'Add Expenses'),
       body: SafeArea(
         child: Column(
           children: [
@@ -54,27 +54,19 @@ class _AddEquipmentsState extends State<AddEquipments> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MakeInput(
-                        label: 'Equipment Name',
+                        label: 'Title',
                         obscureText: false,
                       ),
                       MakeInput(
-                        label: 'Category',
+                        label: 'Date',
                         obscureText: false,
                       ),
                       MakeInput(
-                        label: 'Bought Date',
+                        label: 'Amount',
                         obscureText: false,
                       ),
                       MakeInput(
-                        label: 'Service Terms',
-                        obscureText: false,
-                      ),
-                      MakeInput(
-                        label: 'Date of Last Service',
-                        obscureText: false,
-                      ),
-                      MakeInput(
-                        label: 'Next Service Date',
+                        label: 'Expense Details',
                         obscureText: false,
                       ),
                     ],
@@ -96,7 +88,7 @@ class _AddEquipmentsState extends State<AddEquipments> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddEquipments(),
+                      builder: (context) => AddExpense(),
                     ),
                   ),
                 },

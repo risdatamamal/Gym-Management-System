@@ -6,7 +6,7 @@ class CustomCardRE extends StatelessWidget {
   final String type;
   final Function add;
   final Function view;
-  CustomCardRE(this.imagePath, this.type, this.add, this.view);
+  CustomCardRE({this.imagePath, this.type, this.add, this.view});
   @override
   Widget build(BuildContext context) {
     return Card(
