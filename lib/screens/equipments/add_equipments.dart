@@ -3,19 +3,19 @@ import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
 
-class AddMembers extends StatefulWidget {
+class AddEquipments extends StatefulWidget {
   @override
-  _AddMembersState createState() => _AddMembersState();
+  _AddEquipmentsState createState() => _AddEquipmentsState();
 }
 
-class _AddMembersState extends State<AddMembers> {
+class _AddEquipmentsState extends State<AddEquipments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(Icons.arrow_back_ios, () {
         Navigator.pop(context);
-      }, 'Add Members'),
+      }, 'Add Equipments'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -53,27 +53,27 @@ class _AddMembersState extends State<AddMembers> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MakeInput(
-                      label: 'Name',
+                      label: 'Equipment Name',
                       obscureText: false,
                     ),
                     MakeInput(
-                      label: 'Address',
+                      label: 'Category',
                       obscureText: false,
                     ),
                     MakeInput(
-                      label: 'Phone Number',
+                      label: 'Bought Date',
                       obscureText: false,
                     ),
                     MakeInput(
-                      label: 'Registration Date',
+                      label: 'Service Terms',
                       obscureText: false,
                     ),
                     MakeInput(
-                      label: 'Workout Type',
+                      label: 'Date of Last Service',
                       obscureText: false,
                     ),
                     MakeInput(
-                      label: 'Height',
+                      label: 'Next Service Date',
                       obscureText: false,
                     ),
                   ],
@@ -93,7 +93,7 @@ class _AddMembersState extends State<AddMembers> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AddMembers(),
+                        builder: (context) => AddEquipments(),
                       ),
                     ),
                   },

@@ -3,6 +3,8 @@ import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_e.dart';
 
+import 'add_equipments.dart';
+
 class EquipmentsScreen extends StatefulWidget {
   @override
   _EquipmentsScreenState createState() => _EquipmentsScreenState();
@@ -13,7 +15,7 @@ class _EquipmentsScreenState extends State<EquipmentsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(Icons.menu, () {}, 'Members'),
+      appBar: CustomAppBar(Icons.menu, () {}, 'Equipments'),
       body: SafeArea(
         child: Column(
           children: [
@@ -74,7 +76,14 @@ class _EquipmentsScreenState extends State<EquipmentsScreen> {
                 ),
               ),
               child: FlatButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddEquipments(),
+                    ),
+                  ),
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -84,7 +93,7 @@ class _EquipmentsScreenState extends State<EquipmentsScreen> {
                       size: 40.0,
                     ),
                     Text(
-                      'Add Member',
+                      'Add Equipments',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,

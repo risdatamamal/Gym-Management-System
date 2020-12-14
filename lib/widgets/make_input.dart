@@ -13,7 +13,7 @@ class MakeInput extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 15.0,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w700,
             color: Colors.black87,
           ),
         ),
