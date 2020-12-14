@@ -13,7 +13,7 @@ class _EquipmentsScreenState extends State<EquipmentsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar('Members'),
+      appBar: CustomAppBar(Icons.menu, () {}, 'Members'),
       body: SafeArea(
         child: Column(
           children: [

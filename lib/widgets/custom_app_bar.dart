@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  final IconData icon;
   final String screenTitle;
-  CustomAppBar(this.screenTitle);
+  final Function func;
+  CustomAppBar(this.icon, this.func, this.screenTitle);
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -11,9 +13,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       elevation: 0.0,
       title: Text(screenTitle),
       leading: IconButton(
-        icon: const Icon(Icons.menu),
+        icon: Icon(icon),
         iconSize: 28.0,
-        onPressed: () {},
+        onPressed: func,
       ),
       actions: [
         IconButton(

@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar('Dashboard'),
+      appBar: CustomAppBar(Icons.menu, () {}, 'Dashboard'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

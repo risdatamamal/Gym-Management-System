@@ -13,7 +13,7 @@ class _TrainersScreenState extends State<TrainersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar('Trainers'),
+      appBar: CustomAppBar(Icons.menu, () {}, 'Trainers'),
       body: SafeArea(
         child: Column(
           children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:my_gym_manager/widgets/make_input.dart';
 
 class SignupPage extends StatelessWidget {
   @override
@@ -64,21 +65,22 @@ class SignupPage extends StatelessWidget {
                   children: [
                     FadeAnimation(
                       1.3,
-                      makeInput(
-                        lable: 'Email',
+                      MakeInput(
+                        label: 'Email',
+                        obscureText: false,
                       ),
                     ),
                     FadeAnimation(
                       1.4,
-                      makeInput(
-                        lable: 'Password',
+                      MakeInput(
+                        label: 'Password',
                         obscureText: true,
                       ),
                     ),
                     FadeAnimation(
                       1.5,
-                      makeInput(
-                        lable: 'Confirm Password',
+                      MakeInput(
+                        label: 'Confirm Password',
                         obscureText: true,
                       ),
                     ),
@@ -153,47 +155,6 @@ class SignupPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget makeInput({lable, obscureText = false}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          lable,
-          style: TextStyle(
-            fontSize: 15.0,
-            fontWeight: FontWeight.w400,
-            color: Colors.black87,
-          ),
-        ),
-        SizedBox(
-          height: 5.0,
-        ),
-        TextField(
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(
-              vertical: 0.0,
-              horizontal: 10.0,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.grey[400],
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.grey[400],
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 30.0,
-        ),
-      ],
     );
   }
 }

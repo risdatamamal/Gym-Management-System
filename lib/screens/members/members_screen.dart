@@ -3,6 +3,8 @@ import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_m.dart';
 
+import 'add_members.dart';
+
 class MembersScreen extends StatefulWidget {
   @override
   _MembersScreenState createState() => _MembersScreenState();
@@ -13,7 +15,7 @@ class _MembersScreenState extends State<MembersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar('Members'),
+      appBar: CustomAppBar(Icons.menu, () {}, 'Members'),
       body: SafeArea(
         child: Column(
           children: [
@@ -80,7 +82,14 @@ class _MembersScreenState extends State<MembersScreen> {
                 ),
               ),
               child: FlatButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddMembers(),
+                    ),
+                  ),
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

@@ -13,7 +13,7 @@ class _RevExpScreenState extends State<RevExpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar('Revenue & Expenses'),
+      appBar: CustomAppBar(Icons.menu, () {}, 'Revenue & Expenses'),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
