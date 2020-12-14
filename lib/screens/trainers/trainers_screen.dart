@@ -3,6 +3,8 @@ import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_t.dart';
 
+import 'add_trainers.dart';
+
 class TrainersScreen extends StatefulWidget {
   @override
   _TrainersScreenState createState() => _TrainersScreenState();
@@ -74,7 +76,14 @@ class _TrainersScreenState extends State<TrainersScreen> {
                 ),
               ),
               child: FlatButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddTrainers(),
+                    ),
+                  ),
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
