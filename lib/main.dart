@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_gym_manager/screens/navigator.dart';
+import 'package:my_gym_manager/screens/splash/welcome_page.dart';
 
 void main() {
   runApp(
@@ -9,7 +9,7 @@ void main() {
         fontFamily: 'OpenSans-Regular',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BottomNavBar(),
+      home: WelcomePage(),
     ),
   );
 }

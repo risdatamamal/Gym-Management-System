@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:my_gym_manager/screens/navigator.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -112,7 +113,14 @@ class LoginPage extends StatelessWidget {
                           child: MaterialButton(
                             minWidth: double.infinity,
                             height: 60.0,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BottomNavBar(),
+                                ),
+                              );
+                            },
                             color: Color(0xFFC9C7F1),
                             shape: RoundedRectangleBorder(
                                 side: BorderSide(
