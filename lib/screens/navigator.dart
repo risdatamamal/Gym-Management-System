@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_gym_manager/screens/equipments/equipments_screen.dart';
 import 'package:my_gym_manager/screens/home/home_screen.dart';
 import 'package:my_gym_manager/screens/members/members_screen.dart';
+import 'package:my_gym_manager/screens/trainers/trainers_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -9,10 +11,10 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   final List _screens = [
-    Scaffold(),
+    TrainersScreen(),
     MembersScreen(),
     HomeScreen(),
-    Scaffold(),
+    EquipmentsScreen(),
     Scaffold(),
   ];
 

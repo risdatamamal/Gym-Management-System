@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
-import 'package:my_gym_manager/widgets/custom_card_m.dart';
+import 'package:my_gym_manager/widgets/custom_card_t.dart';
 
-class MembersScreen extends StatefulWidget {
+class TrainersScreen extends StatefulWidget {
   @override
-  _MembersScreenState createState() => _MembersScreenState();
+  _TrainersScreenState createState() => _TrainersScreenState();
 }
 
-class _MembersScreenState extends State<MembersScreen> {
+class _TrainersScreenState extends State<TrainersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar('Members'),
+      appBar: CustomAppBar('Trainers'),
       body: SafeArea(
         child: Column(
           children: [
@@ -40,7 +40,7 @@ class _MembersScreenState extends State<MembersScreen> {
                         decoration: InputDecoration(
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
-                          hintText: 'i.e Santha Rajapaksha / 2356',
+                          hintText: 'i.e Lazar Angelov / 1',
                           prefixIcon: Icon(
                             Icons.search,
                           ),
@@ -56,15 +56,9 @@ class _MembersScreenState extends State<MembersScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    CustomCardM(
+                    CustomCardT(
                         'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
+                    CustomCardT(
                         'assets/images/baby_child_children_boy-512.png'),
                   ],
                 ),
@@ -90,7 +84,7 @@ class _MembersScreenState extends State<MembersScreen> {
                       size: 40.0,
                     ),
                     Text(
-                      'Add Member',
+                      'Add Trainer',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,

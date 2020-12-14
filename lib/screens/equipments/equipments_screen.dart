@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
-import 'package:my_gym_manager/widgets/custom_card_m.dart';
+import 'package:my_gym_manager/widgets/custom_card_e.dart';
 
-class MembersScreen extends StatefulWidget {
+class EquipmentsScreen extends StatefulWidget {
   @override
-  _MembersScreenState createState() => _MembersScreenState();
+  _EquipmentsScreenState createState() => _EquipmentsScreenState();
 }
 
-class _MembersScreenState extends State<MembersScreen> {
+class _EquipmentsScreenState extends State<EquipmentsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,16 +56,10 @@ class _MembersScreenState extends State<MembersScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
+                    CustomCardE(
+                        'assets/images/dumbbell_gym_fitness_exercise-512.png'),
+                    CustomCardE(
+                        'assets/images/dumbbell_gym_fitness_exercise-512.png'),
                   ],
                 ),
               ),

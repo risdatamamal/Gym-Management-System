@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CustomCard extends StatelessWidget {
+class CustomCardE extends StatelessWidget {
   final String imagePath;
-  CustomCard(this.imagePath);
+  CustomCardE(this.imagePath);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,35 +27,35 @@ class CustomCard extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Santha Rajapaksha',
+                    'Adjustable Dumbell',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0),
                   ),
                   Text(
-                    'ID: 1998',
+                    'ID: EQ42',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Mobile: 0771234567',
+                    'Date of Bought: 2019-09-02',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Plan Expiry: 2021-01-25',
+                    'Last Service Date: 2020-06-25',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Due Amount: Rs. 2000.00',
+                    'Next Service Date: 2021-01-25',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -80,50 +80,14 @@ class CustomCard extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(
-                      Icons.call,
-                      color: Colors.teal,
-                    ),
-                    tooltip: 'Call Member',
-                    onPressed: () => {},
-                  ),
-                  Text(
-                    'Call',
-                    style: TextStyle(
-                      color: Colors.teal,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.message,
-                      color: Colors.teal,
-                    ),
-                    tooltip: 'Message Member',
-                    onPressed: () => {},
-                  ),
-                  Text(
-                    'Message',
-                    style: TextStyle(
-                      color: Colors.teal,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
                       Icons.money,
                       color: Colors.teal,
                     ),
-                    tooltip: 'Renew Fees',
+                    tooltip: 'Service Equipment',
                     onPressed: () => {},
                   ),
                   Text(
-                    'Renew',
+                    'Service',
                     style: TextStyle(
                       color: Colors.teal,
                     ),
@@ -137,7 +101,7 @@ class CustomCard extends StatelessWidget {
                       Icons.delete,
                       color: Colors.red,
                     ),
-                    tooltip: 'Delete Member',
+                    tooltip: 'Delete Equipment',
                     onPressed: () => {},
                   ),
                   Text(
