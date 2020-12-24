@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
+import 'package:my_gym_manager/authentication/authentication_service.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:my_gym_manager/screens/login/login_page.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
+import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignupPage extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController password1Controller = TextEditingController();
+  final TextEditingController password2Controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +75,7 @@ class SignupPage extends StatelessWidget {
                       MakeInput(
                         label: 'Email',
                         obscureText: false,
+                        controllerID: emailController,
                       ),
                     ),
                     FadeAnimation(
@@ -75,6 +83,7 @@ class SignupPage extends StatelessWidget {
                       MakeInput(
                         label: 'Password',
                         obscureText: true,
+                        controllerID: password1Controller,
                       ),
                     ),
                     FadeAnimation(
@@ -82,6 +91,7 @@ class SignupPage extends StatelessWidget {
                       MakeInput(
                         label: 'Confirm Password',
                         obscureText: true,
+                        controllerID: password2Controller,
                       ),
                     ),
                   ],
@@ -112,7 +122,39 @@ class SignupPage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60.0,
-                      onPressed: () {},
+                      onPressed: () {
+                        if (password1Controller.text ==
+                            password2Controller.text) {
+                          context.read<AuthenticationService>().signUp(
+                                email: emailController.text.trim(),
+                                password: password1Controller.text.trim(),
+                              );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginPage(),
+                            ),
+                          );
+                        } else {
+                          Alert(
+                            context: context,
+                            type: AlertType.error,
+                            title: "Alert",
+                            desc: "Both passwords should match each other!",
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "Ok",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
+                        }
+                      },
                       color: Colors.purple[200],
                       shape: RoundedRectangleBorder(
                           side: BorderSide(

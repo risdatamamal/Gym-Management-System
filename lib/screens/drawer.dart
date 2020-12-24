@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_gym_manager/authentication/authentication_service.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -58,7 +60,9 @@ class AppDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
                 tooltip: 'Log Out of the App',
-                onPressed: () => {},
+                onPressed: () => {
+                  context.read<AuthenticationService>().signOut(),
+                },
               ),
               Text(
                 'Log Out',

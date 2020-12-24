@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
+import 'package:my_gym_manager/authentication/authentication_service.dart';
 import 'package:my_gym_manager/config/palette.dart';
-import 'package:my_gym_manager/screens/navigator.dart';
+import 'package:provider/provider.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
 
 class LoginPage extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +76,7 @@ class LoginPage extends StatelessWidget {
                             MakeInput(
                               label: 'Email',
                               obscureText: false,
+                              controllerID: emailController,
                             ),
                           ),
                           FadeAnimation(
@@ -80,6 +84,7 @@ class LoginPage extends StatelessWidget {
                             MakeInput(
                               label: 'Password',
                               obscureText: true,
+                              controllerID: passwordController,
                             ),
                           ),
                         ],
@@ -116,12 +121,11 @@ class LoginPage extends StatelessWidget {
                             minWidth: double.infinity,
                             height: 60.0,
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => BottomNavBar(),
-                                ),
-                              );
+                              context.read<AuthenticationService>().signIn(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  );
+                              Navigator.pop(context);
                             },
                             color: Color(0xFFC9C7F1),
                             shape: RoundedRectangleBorder(

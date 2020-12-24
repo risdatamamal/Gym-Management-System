@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class MakeInput extends StatelessWidget {
   final String label;
   final bool obscureText;
-  MakeInput({this.label, this.obscureText});
+  final TextEditingController controllerID;
+  MakeInput({this.label, this.obscureText, this.controllerID});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,6 +22,7 @@ class MakeInput extends StatelessWidget {
           height: 5.0,
         ),
         TextField(
+          controller: controllerID,
           obscureText: obscureText,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
