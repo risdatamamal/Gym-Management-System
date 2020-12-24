@@ -33,150 +33,148 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          FadeAnimation(
-                            1.0,
-                            Text(
-                              'LOGIN',
-                              style: TextStyle(
-                                fontSize: 30.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        FadeAnimation(
+                          1.0,
+                          Text(
+                            'LOGIN',
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
-                            height: 20.0,
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        FadeAnimation(
+                          1.2,
+                          Text(
+                            'Login to your GYM',
+                            style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40.0),
+                      child: Column(
+                        children: [
+                          FadeAnimation(
+                            1.3,
+                            MakeInput(
+                              label: 'Email',
+                              obscureText: false,
+                            ),
                           ),
                           FadeAnimation(
-                            1.2,
-                            Text(
-                              'Login to your GYM',
-                              style: TextStyle(
-                                color: Colors.grey[700],
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w700,
-                              ),
+                            1.4,
+                            MakeInput(
+                              label: 'Password',
+                              obscureText: true,
                             ),
                           ),
                         ],
                       ),
+                    ),
+                    FadeAnimation(
+                      1.5,
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 40.0),
-                        child: Column(
-                          children: [
-                            FadeAnimation(
-                              1.3,
-                              MakeInput(
-                                label: 'Email',
-                                obscureText: false,
-                              ),
-                            ),
-                            FadeAnimation(
-                              1.4,
-                              MakeInput(
-                                label: 'Password',
-                                obscureText: true,
-                              ),
-                            ),
-                          ],
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 40.0,
                         ),
-                      ),
-                      FadeAnimation(
-                        1.5,
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 40.0,
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            top: 3.0,
                           ),
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              top: 3.0,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50.0),
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: Colors.black,
-                                ),
-                                top: BorderSide(
-                                  color: Colors.black,
-                                ),
-                                left: BorderSide(
-                                  color: Colors.black,
-                                ),
-                                right: BorderSide(
-                                  color: Colors.black,
-                                ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            border: Border(
+                              bottom: BorderSide(
+                                color: Colors.black,
                               ),
-                            ),
-                            child: MaterialButton(
-                              minWidth: double.infinity,
-                              height: 60.0,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BottomNavBar(),
-                                  ),
-                                );
-                              },
-                              color: Color(0xFFC9C7F1),
-                              shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                    color: Colors.black,
-                                  ),
-                                  borderRadius: BorderRadius.circular(50.0)),
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18.0,
-                                ),
+                              top: BorderSide(
+                                color: Colors.black,
+                              ),
+                              left: BorderSide(
+                                color: Colors.black,
+                              ),
+                              right: BorderSide(
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      FadeAnimation(
-                        1.6,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Don\'t have an account? ',
-                            ),
-                            Text(
-                              'Sign up',
+                          child: MaterialButton(
+                            minWidth: double.infinity,
+                            height: 60.0,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BottomNavBar(),
+                                ),
+                              );
+                            },
+                            color: Color(0xFFC9C7F1),
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0)),
+                            child: Text(
+                              'Login',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18.0,
                               ),
-                            )
-                          ],
+                            ),
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                FadeAnimation(
-                  1.7,
-                  Container(
-                    height: MediaQuery.of(context).size.height / 3,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/gym_club_fitness_center-512.png'),
-                        fit: BoxFit.fitHeight,
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    FadeAnimation(
+                      1.6,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don\'t have an account? ',
+                          ),
+                          Text(
+                            'Sign up',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18.0,
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  ),
+                    FadeAnimation(
+                      1.7,
+                      Container(
+                        height: MediaQuery.of(context).size.height / 3,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                                'assets/images/gym_coach_trainer_fitness-512.png'),
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

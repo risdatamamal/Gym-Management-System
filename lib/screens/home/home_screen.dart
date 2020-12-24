@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/stats_grid.dart';
 
@@ -13,7 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(Icons.menu, () {}, 'Dashboard'),
+      appBar: CustomAppBar('Dashboard'),
+      drawer: AppDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

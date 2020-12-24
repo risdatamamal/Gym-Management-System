@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_t.dart';
 
@@ -15,7 +16,8 @@ class _TrainersScreenState extends State<TrainersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(Icons.menu, () {}, 'Trainers'),
+      appBar: CustomAppBar('Trainers'),
+      drawer: AppDrawer(),
       body: SafeArea(
         child: Column(
           children: [

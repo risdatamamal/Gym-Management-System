@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
+import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_re.dart';
 
@@ -16,7 +17,8 @@ class _IncExpScreenState extends State<IncExpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(Icons.menu, () {}, 'Revenue & Expenses'),
+      appBar: CustomAppBar('Revenue & Expenses'),
+      drawer: AppDrawer(),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

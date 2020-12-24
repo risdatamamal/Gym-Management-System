@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
-import 'package:my_gym_manager/widgets/custom_app_bar.dart';
+import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
 
 class AddEquipments extends StatefulWidget {
@@ -13,7 +13,7 @@ class _AddEquipmentsState extends State<AddEquipments> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(Icons.arrow_back_ios, () {
+      appBar: CustomAppBar2(Icons.arrow_back_ios, () {
         Navigator.pop(context);
       }, 'Add Equipments'),
       body: SafeArea(

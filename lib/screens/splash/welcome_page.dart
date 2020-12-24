@@ -57,7 +57,7 @@ class WelcomePage extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
-                            'assets/images/gym_coach_trainer_fitness-512.png'),
+                            'assets/images/gym_club_fitness_center-512.png'),
                       ),
                     ),
                   ),
