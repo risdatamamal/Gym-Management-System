@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
@@ -9,8 +11,18 @@ class AddMembers extends StatefulWidget {
 }
 
 class _AddMembersState extends State<AddMembers> {
+  final referenceDatabase = FirebaseDatabase.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController regdateController = TextEditingController();
+  final TextEditingController wtController = TextEditingController();
+  final TextEditingController heightController = TextEditingController();
+  final TextEditingController feeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final ref = referenceDatabase.reference();
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar2(Icons.arrow_back_ios, () {
@@ -56,26 +68,37 @@ class _AddMembersState extends State<AddMembers> {
                       MakeInput(
                         label: 'Name',
                         obscureText: false,
+                        controllerID: nameController,
                       ),
                       MakeInput(
                         label: 'Address',
                         obscureText: false,
+                        controllerID: addressController,
                       ),
                       MakeInput(
                         label: 'Phone Number',
                         obscureText: false,
+                        controllerID: phoneController,
                       ),
                       MakeInput(
                         label: 'Registration Date',
                         obscureText: false,
+                        controllerID: regdateController,
                       ),
                       MakeInput(
                         label: 'Workout Type',
                         obscureText: false,
+                        controllerID: wtController,
                       ),
                       MakeInput(
                         label: 'Height',
                         obscureText: false,
+                        controllerID: heightController,
+                      ),
+                      MakeInput(
+                        label: 'Fee',
+                        obscureText: false,
+                        controllerID: feeController,
                       ),
                     ],
                   ),
@@ -93,12 +116,24 @@ class _AddMembersState extends State<AddMembers> {
               ),
               child: FlatButton(
                 onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddMembers(),
-                    ),
-                  ),
+                  ref.child(auth.currentUser.uid).child('Members').push().set(
+                    {
+                      'Name': nameController.text,
+                      'Address': addressController.text,
+                      'Phone_Number': phoneController.text,
+                      'Reg_Date': regdateController.text,
+                      'Workout_Type': wtController.text,
+                      'Height': heightController.text,
+                      'Fee': feeController.text,
+                    },
+                  ).asStream(),
+                  nameController.clear(),
+                  addressController.clear(),
+                  phoneController.clear(),
+                  regdateController.clear(),
+                  wtController.clear(),
+                  heightController.clear(),
+                  feeController.clear(),
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

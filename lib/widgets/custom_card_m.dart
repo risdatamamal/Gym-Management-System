@@ -2,9 +2,31 @@
 
 import 'package:flutter/material.dart';
 
-class CustomCardM extends StatelessWidget {
+class CustomCardM extends StatefulWidget {
+  final String name;
+  final String phoneNumber;
+  final String date;
+  final String fee;
   final String imagePath;
-  CustomCardM(this.imagePath);
+  final Function func1;
+  final Function func2;
+  final Function func3;
+  final Function func4;
+  CustomCardM(
+      {this.name,
+      this.phoneNumber,
+      this.date,
+      this.fee,
+      this.imagePath,
+      this.func1,
+      this.func2,
+      this.func3,
+      this.func4});
+  @override
+  _CustomCardMState createState() => _CustomCardMState();
+}
+
+class _CustomCardMState extends State<CustomCardM> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,14 +44,14 @@ class CustomCardM extends StatelessWidget {
             children: [
               Flexible(
                 child: Image.asset(
-                  imagePath,
+                  widget.imagePath,
                   width: 64.0,
                 ),
               ),
               Column(
                 children: [
                   Text(
-                    'Santha Rajapaksha',
+                    widget.name,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -43,21 +65,21 @@ class CustomCardM extends StatelessWidget {
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Mobile: 0771234567',
+                    widget.phoneNumber,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Plan Expiry: 2021-01-25',
+                    widget.date,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Due Amount: Rs. 2000.00',
+                    'Due Amount: Rs. ${widget.fee}',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -86,7 +108,7 @@ class CustomCardM extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Call Member',
-                    onPressed: () => {},
+                    onPressed: widget.func1,
                   ),
                   Text(
                     'Call',
@@ -104,7 +126,7 @@ class CustomCardM extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Message Member',
-                    onPressed: () => {},
+                    onPressed: widget.func2,
                   ),
                   Text(
                     'Message',
@@ -122,7 +144,7 @@ class CustomCardM extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Renew Fees',
-                    onPressed: () => {},
+                    onPressed: widget.func3,
                   ),
                   Text(
                     'Renew',
@@ -140,7 +162,7 @@ class CustomCardM extends StatelessWidget {
                       color: Colors.red,
                     ),
                     tooltip: 'Delete Member',
-                    onPressed: () => {},
+                    onPressed: widget.func4,
                   ),
                   Text(
                     'Delete',

@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_m.dart';
-
 import 'add_members.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class MembersScreen extends StatefulWidget {
   @override
@@ -12,6 +15,17 @@ class MembersScreen extends StatefulWidget {
 }
 
 class _MembersScreenState extends State<MembersScreen> {
+  DatabaseReference _memberRef;
+  @override
+  void initState() {
+    final FirebaseDatabase database = FirebaseDatabase();
+    _memberRef = database
+        .reference()
+        .child(FirebaseAuth.instance.currentUser.uid)
+        .child('Members');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,21 +71,47 @@ class _MembersScreenState extends State<MembersScreen> {
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardM(
-                        'assets/images/baby_child_children_boy-512.png'),
-                  ],
-                ),
+              child: Column(
+                children: [
+                  Flexible(
+                    child: new FirebaseAnimatedList(
+                      shrinkWrap: true,
+                      query: _memberRef,
+                      itemBuilder: (
+                        BuildContext context,
+                        DataSnapshot snapshot,
+                        Animation<double> animation,
+                        int index,
+                      ) {
+                        return CustomCardM(
+                          name: snapshot.value['Name'].toString(),
+                          phoneNumber:
+                              snapshot.value['Phone_Number'].toString(),
+                          date: snapshot.value['Reg_Date'].toString(),
+                          fee: snapshot.value['Fee'].toString(),
+                          imagePath:
+                              'assets/images/baby_child_children_boy-512.png',
+                          func1: () => {
+                            UrlLauncher.launch(
+                                'tel:${snapshot.value['Phone_Number'].toString()}')
+                          },
+                          func2: () => {
+                            UrlLauncher.launch(
+                                'sms:${snapshot.value['Phone_Number'].toString()}')
+                          },
+                          func3: () => {
+                            _memberRef
+                                .child(snapshot.key)
+                                .child('Fee')
+                                .set('0.00')
+                          },
+                          func4: () =>
+                              {_memberRef.child(snapshot.key).remove()},
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(

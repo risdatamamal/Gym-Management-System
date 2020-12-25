@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_gym_manager/authentication/authentication_service.dart';
 import 'package:my_gym_manager/config/palette.dart';
@@ -47,7 +48,7 @@ class AppDrawer extends StatelessWidget {
               ),
               SizedBox(height: 10.0),
               Text(
-                'dev@ptg.com',
+                FirebaseAuth.instance.currentUser.email,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
