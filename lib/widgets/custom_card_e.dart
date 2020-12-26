@@ -21,16 +21,16 @@ class CustomCardE extends StatefulWidget {
 }
 
 class _CustomCardEState extends State<CustomCardE> {
-  DateTime date;
-  Color timeColor;
+  // DateTime date;
+  // Color timeColor;
   @override
   Widget build(BuildContext context) {
-    date = DateTime.parse(widget.servdate);
-    if (date.isBefore(DateTime.now())) {
-      timeColor = Colors.red;
-    } else {
-      timeColor = Colors.black;
-    }
+    // date = DateTime.parse(widget.servdate);
+    // if (date.isBefore(DateTime.now())) {
+    //   timeColor = Colors.red;
+    // } else {
+    //   timeColor = Colors.black;
+    // }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -67,9 +67,9 @@ class _CustomCardEState extends State<CustomCardE> {
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Service Date: ${widget.servdate}',
+                    'Bought Date: ${widget.servdate}',
                     style: TextStyle(
-                        color: timeColor,
+                        color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
@@ -77,55 +77,58 @@ class _CustomCardEState extends State<CustomCardE> {
               ),
               Flexible(
                 child: IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
-                  tooltip: 'More Details',
-                  onPressed: () => {},
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                  tooltip: 'Delete Equipment',
+                  onPressed: widget.func2,
                 ),
               ),
             ],
           ),
-          Divider(color: Colors.black),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.money,
-                      color: Colors.teal,
-                    ),
-                    tooltip: 'Service Equipment',
-                    onPressed: widget.func1,
-                  ),
-                  Text(
-                    'Service',
-                    style: TextStyle(
-                      color: Colors.teal,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    ),
-                    tooltip: 'Delete Equipment',
-                    onPressed: widget.func2,
-                  ),
-                  Text(
-                    'Delete',
-                    style: TextStyle(
-                      color: Colors.red,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+          // Divider(color: Colors.black),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //   children: [
+          //     Column(
+          //       children: [
+          //         IconButton(
+          //           icon: Icon(
+          //             Icons.money,
+          //             color: Colors.teal,
+          //           ),
+          //           tooltip: 'Service Equipment',
+          //           onPressed: widget.func1,
+          //         ),
+          //         Text(
+          //           'Service',
+          //           style: TextStyle(
+          //             color: Colors.teal,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //     Column(
+          //       children: [
+          //         IconButton(
+          //           icon: Icon(
+          //             Icons.delete,
+          //             color: Colors.red,
+          //           ),
+          //           tooltip: 'Delete Equipment',
+          //           onPressed: widget.func2,
+          //         ),
+          //         Text(
+          //           'Delete',
+          //           style: TextStyle(
+          //             color: Colors.red,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

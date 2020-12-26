@@ -28,16 +28,16 @@ class CustomCardM extends StatefulWidget {
 }
 
 class _CustomCardMState extends State<CustomCardM> {
-  DateTime date;
-  Color timeColor;
+  //DateTime date;
+  //Color timeColor;
   @override
   Widget build(BuildContext context) {
-    date = DateTime.parse(widget.date);
-    if (date.isBefore(DateTime.now())) {
-      timeColor = Colors.red;
-    } else {
-      timeColor = Colors.black;
-    }
+    // date = DateTime.parse(widget.date);
+    // if (date.isBefore(DateTime.now())) {
+    //   timeColor = Colors.red;
+    // } else {
+    //   timeColor = Colors.black;
+    // }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -74,16 +74,16 @@ class _CustomCardMState extends State<CustomCardM> {
                         fontSize: 15.0),
                   ),
                   Text(
-                    widget.date,
+                    'Reg. Date: ${widget.date}',
                     style: TextStyle(
-                        color: timeColor,
+                        color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Due Amount: Rs. ${widget.fee}',
+                    'Fee: Rs. ${widget.fee}',
                     style: TextStyle(
-                        color: timeColor,
+                        color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
@@ -138,24 +138,24 @@ class _CustomCardMState extends State<CustomCardM> {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.money,
-                      color: Colors.teal,
-                    ),
-                    tooltip: 'Renew Fees',
-                    onPressed: widget.func3,
-                  ),
-                  Text(
-                    'Renew',
-                    style: TextStyle(
-                      color: Colors.teal,
-                    ),
-                  ),
-                ],
-              ),
+              // Column(
+              //   children: [
+              //     IconButton(
+              //       icon: Icon(
+              //         Icons.money,
+              //         color: Colors.teal,
+              //       ),
+              //       tooltip: 'Renew Fees',
+              //       onPressed: widget.func3,
+              //     ),
+              //     Text(
+              //       'Renew',
+              //       style: TextStyle(
+              //         color: Colors.teal,
+              //       ),
+              //     ),
+              //   ],
+              // ),
               Column(
                 children: [
                   IconButton(

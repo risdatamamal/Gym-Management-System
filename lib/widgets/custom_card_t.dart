@@ -25,16 +25,16 @@ class CustomCardT extends StatefulWidget {
 }
 
 class _CustomCardTState extends State<CustomCardT> {
-  DateTime date;
-  Color timeColor;
+  // DateTime date;
+  // Color timeColor;
   @override
   Widget build(BuildContext context) {
-    date = DateTime.parse(widget.date);
-    if (date.isBefore(DateTime.now())) {
-      timeColor = Colors.red;
-    } else {
-      timeColor = Colors.black;
-    }
+    // date = DateTime.parse(widget.date);
+    // if (date.isBefore(DateTime.now())) {
+    //   timeColor = Colors.red;
+    // } else {
+    //   timeColor = Colors.black;
+    // }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -71,16 +71,16 @@ class _CustomCardTState extends State<CustomCardT> {
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Salary Date: ${widget.date}',
+                    'Reg. Date: ${widget.date}',
                     style: TextStyle(
-                        color: timeColor,
+                        color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
                     'Salary: Rs. ${widget.salary}',
                     style: TextStyle(
-                        color: timeColor,
+                        color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
@@ -135,24 +135,24 @@ class _CustomCardTState extends State<CustomCardT> {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.money,
-                      color: Colors.teal,
-                    ),
-                    tooltip: 'Pay Salary',
-                    onPressed: widget.func3,
-                  ),
-                  Text(
-                    'Pay',
-                    style: TextStyle(
-                      color: Colors.teal,
-                    ),
-                  ),
-                ],
-              ),
+              // Column(
+              //   children: [
+              //     IconButton(
+              //       icon: Icon(
+              //         Icons.money,
+              //         color: Colors.teal,
+              //       ),
+              //       tooltip: 'Pay Salary',
+              //       onPressed: widget.func3,
+              //     ),
+              //     Text(
+              //       'Pay',
+              //       style: TextStyle(
+              //         color: Colors.teal,
+              //       ),
+              //     ),
+              //   ],
+              // ),
               Column(
                 children: [
                   IconButton(
