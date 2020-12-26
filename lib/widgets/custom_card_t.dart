@@ -1,10 +1,40 @@
 import 'package:flutter/material.dart';
 
-class CustomCardT extends StatelessWidget {
+class CustomCardT extends StatefulWidget {
+  final String name;
+  final String phoneNumber;
+  final String date;
+  final String salary;
   final String imagePath;
-  CustomCardT(this.imagePath);
+  final Function func1;
+  final Function func2;
+  final Function func3;
+  final Function func4;
+  CustomCardT(
+      {this.name,
+      this.phoneNumber,
+      this.date,
+      this.salary,
+      this.imagePath,
+      this.func1,
+      this.func2,
+      this.func3,
+      this.func4});
+  @override
+  _CustomCardTState createState() => _CustomCardTState();
+}
+
+class _CustomCardTState extends State<CustomCardT> {
+  DateTime date;
+  Color timeColor;
   @override
   Widget build(BuildContext context) {
+    date = DateTime.parse(widget.date);
+    if (date.isBefore(DateTime.now())) {
+      timeColor = Colors.red;
+    } else {
+      timeColor = Colors.black;
+    }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -20,44 +50,37 @@ class CustomCardT extends StatelessWidget {
             children: [
               Flexible(
                 child: Image.asset(
-                  imagePath,
+                  widget.imagePath,
                   width: 64.0,
                 ),
               ),
               Column(
                 children: [
                   Text(
-                    'Lazar Angelov',
+                    widget.name,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0),
                   ),
                   Text(
-                    'ID: 1',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0),
-                  ),
-                  Text(
-                    'Mobile: 0771234567',
+                    widget.phoneNumber,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Salary Date: 2021-01-25',
+                    'Salary Date: ${widget.date}',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Salary: Rs. 25,000.00',
+                    'Salary: Rs. ${widget.salary}',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
@@ -84,7 +107,7 @@ class CustomCardT extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Call Trainer',
-                    onPressed: () => {},
+                    onPressed: widget.func1,
                   ),
                   Text(
                     'Call',
@@ -102,7 +125,7 @@ class CustomCardT extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Message Trainer',
-                    onPressed: () => {},
+                    onPressed: widget.func2,
                   ),
                   Text(
                     'Message',
@@ -120,7 +143,7 @@ class CustomCardT extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Pay Salary',
-                    onPressed: () => {},
+                    onPressed: widget.func3,
                   ),
                   Text(
                     'Pay',
@@ -138,7 +161,7 @@ class CustomCardT extends StatelessWidget {
                       color: Colors.red,
                     ),
                     tooltip: 'Delete Trainer',
-                    onPressed: () => {},
+                    onPressed: widget.func4,
                   ),
                   Text(
                     'Delete',

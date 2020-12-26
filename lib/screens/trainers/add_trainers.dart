@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
@@ -9,8 +12,18 @@ class AddTrainers extends StatefulWidget {
 }
 
 class _AddTrainersState extends State<AddTrainers> {
+  final referenceDatabase = FirebaseDatabase.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController regdateController = TextEditingController()
+    ..text = 'Please select a Registration Date.';
+  final TextEditingController qualificationController = TextEditingController();
+  final TextEditingController salaryController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final ref = referenceDatabase.reference();
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar2(Icons.arrow_back_ios, () {
@@ -56,26 +69,80 @@ class _AddTrainersState extends State<AddTrainers> {
                       MakeInput(
                         label: 'Name',
                         obscureText: false,
+                        controllerID: nameController,
                       ),
                       MakeInput(
                         label: 'Address',
                         obscureText: false,
+                        controllerID: addressController,
                       ),
                       MakeInput(
                         label: 'Phone Number',
                         obscureText: false,
-                      ),
-                      MakeInput(
-                        label: 'Registration Date',
-                        obscureText: false,
+                        controllerID: phoneController,
                       ),
                       MakeInput(
                         label: 'Salary',
                         obscureText: false,
+                        controllerID: salaryController,
                       ),
                       MakeInput(
                         label: 'Qualifications',
                         obscureText: false,
+                        controllerID: qualificationController,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Registration Date',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          TextField(
+                            controller: regdateController,
+                            enabled: false,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0.0,
+                                horizontal: 10.0,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                            ),
+                          ),
+                          RaisedButton(
+                            child: Text('Pick a Date'),
+                            onPressed: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2001),
+                                lastDate: DateTime(2100),
+                              ).then((_dateTime) {
+                                setState(() {
+                                  regdateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(_dateTime);
+                                });
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -93,12 +160,22 @@ class _AddTrainersState extends State<AddTrainers> {
               ),
               child: FlatButton(
                 onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddTrainers(),
-                    ),
-                  ),
+                  ref.child(auth.currentUser.uid).child('Trainers').push().set(
+                    {
+                      'Name': nameController.text,
+                      'Address': addressController.text,
+                      'Phone_Number': phoneController.text,
+                      'Reg_Date': regdateController.text,
+                      'Qualifications': qualificationController.text,
+                      'Salary': salaryController.text,
+                    },
+                  ).asStream(),
+                  nameController.clear(),
+                  addressController.clear(),
+                  phoneController.clear(),
+                  regdateController.clear(),
+                  qualificationController.clear(),
+                  salaryController.clear(),
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

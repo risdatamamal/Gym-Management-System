@@ -1,8 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_t.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 import 'add_trainers.dart';
 
@@ -12,6 +18,18 @@ class TrainersScreen extends StatefulWidget {
 }
 
 class _TrainersScreenState extends State<TrainersScreen> {
+  DatabaseReference _trainerRef;
+  DateTime date;
+  @override
+  void initState() {
+    final FirebaseDatabase database = FirebaseDatabase();
+    _trainerRef = database
+        .reference()
+        .child(FirebaseAuth.instance.currentUser.uid)
+        .child('Trainers');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,15 +75,88 @@ class _TrainersScreenState extends State<TrainersScreen> {
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CustomCardT(
-                        'assets/images/baby_child_children_boy-512.png'),
-                    CustomCardT(
-                        'assets/images/baby_child_children_boy-512.png'),
-                  ],
-                ),
+              child: Column(
+                children: [
+                  Flexible(
+                    child: new FirebaseAnimatedList(
+                      shrinkWrap: true,
+                      query: _trainerRef,
+                      itemBuilder: (
+                        BuildContext context,
+                        DataSnapshot snapshot,
+                        Animation<double> animation,
+                        int index,
+                      ) {
+                        return CustomCardT(
+                          name: snapshot.value['Name'].toString(),
+                          phoneNumber:
+                              snapshot.value['Phone_Number'].toString(),
+                          date: snapshot.value['Reg_Date'].toString(),
+                          salary: snapshot.value['Salary'].toString(),
+                          imagePath:
+                              'assets/images/baby_child_children_boy-512.png',
+                          func1: () => {
+                            UrlLauncher.launch(
+                                'tel:${snapshot.value['Phone_Number'].toString()}')
+                          },
+                          func2: () => {
+                            UrlLauncher.launch(
+                                'sms:${snapshot.value['Phone_Number'].toString()}')
+                          },
+                          func3: () => {
+                            Alert(
+                              context: context,
+                              type: AlertType.warning,
+                              title: "Renew Salary",
+                              desc:
+                                  "Are you sure you want to update trainer's salary?",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "Renew",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    date = DateTime.parse(
+                                        snapshot.value['Reg_Date'].toString());
+                                    _trainerRef
+                                        .child(snapshot.key)
+                                        .child('Reg_Date')
+                                        .set(DateFormat('yyyy-MM-dd')
+                                            .format(
+                                              date.add(
+                                                Duration(days: 30),
+                                              ),
+                                            )
+                                            .toString());
+                                    _trainerRef
+                                        .child(snapshot.key)
+                                        .child('Salary')
+                                        .set('0.00');
+                                    Navigator.pop(context);
+                                  },
+                                  color: Color.fromRGBO(0, 179, 134, 1.0),
+                                ),
+                                DialogButton(
+                                  child: Text(
+                                    "Cancel",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  color: Colors.red,
+                                )
+                              ],
+                            ).show(),
+                          },
+                          func4: () =>
+                              {_trainerRef.child(snapshot.key).remove()},
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(

@@ -67,13 +67,6 @@ class _CustomCardMState extends State<CustomCardM> {
                         fontSize: 20.0),
                   ),
                   Text(
-                    'ID: 1998',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0),
-                  ),
-                  Text(
                     widget.phoneNumber,
                     style: TextStyle(
                         color: Colors.black,
