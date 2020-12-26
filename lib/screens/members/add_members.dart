@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
@@ -16,7 +17,8 @@ class _AddMembersState extends State<AddMembers> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController regdateController = TextEditingController();
+  final TextEditingController regdateController = TextEditingController()
+    ..text = 'Please select a Registration Date.';
   final TextEditingController wtController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
   final TextEditingController feeController = TextEditingController();
@@ -81,11 +83,6 @@ class _AddMembersState extends State<AddMembers> {
                         controllerID: phoneController,
                       ),
                       MakeInput(
-                        label: 'Registration Date',
-                        obscureText: false,
-                        controllerID: regdateController,
-                      ),
-                      MakeInput(
                         label: 'Workout Type',
                         obscureText: false,
                         controllerID: wtController,
@@ -99,6 +96,59 @@ class _AddMembersState extends State<AddMembers> {
                         label: 'Fee',
                         obscureText: false,
                         controllerID: feeController,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Registration Date',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          TextField(
+                            controller: regdateController,
+                            enabled: false,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0.0,
+                                horizontal: 10.0,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                            ),
+                          ),
+                          RaisedButton(
+                            child: Text('Pick a Date'),
+                            onPressed: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2001),
+                                lastDate: DateTime(2100),
+                              ).then((_dateTime) {
+                                setState(() {
+                                  regdateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(_dateTime);
+                                });
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),

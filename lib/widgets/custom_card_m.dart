@@ -12,6 +12,7 @@ class CustomCardM extends StatefulWidget {
   final Function func2;
   final Function func3;
   final Function func4;
+
   CustomCardM(
       {this.name,
       this.phoneNumber,
@@ -27,8 +28,16 @@ class CustomCardM extends StatefulWidget {
 }
 
 class _CustomCardMState extends State<CustomCardM> {
+  DateTime date;
+  Color timeColor;
   @override
   Widget build(BuildContext context) {
+    date = DateTime.parse(widget.date);
+    if (date.isBefore(DateTime.now())) {
+      timeColor = Colors.red;
+    } else {
+      timeColor = Colors.black;
+    }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -74,14 +83,14 @@ class _CustomCardMState extends State<CustomCardM> {
                   Text(
                     widget.date,
                     style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
                     'Due Amount: Rs. ${widget.fee}',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),

@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar.dart';
 import 'package:my_gym_manager/widgets/custom_card_m.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'add_members.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
@@ -16,6 +18,7 @@ class MembersScreen extends StatefulWidget {
 
 class _MembersScreenState extends State<MembersScreen> {
   DatabaseReference _memberRef;
+  DateTime date;
   @override
   void initState() {
     final FirebaseDatabase database = FirebaseDatabase();
@@ -100,10 +103,51 @@ class _MembersScreenState extends State<MembersScreen> {
                                 'sms:${snapshot.value['Phone_Number'].toString()}')
                           },
                           func3: () => {
-                            _memberRef
-                                .child(snapshot.key)
-                                .child('Fee')
-                                .set('0.00')
+                            Alert(
+                              context: context,
+                              type: AlertType.warning,
+                              title: "Renew Fee",
+                              desc:
+                                  "Are you sure you want to update member's fee?",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "Renew",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    date = DateTime.parse(
+                                        snapshot.value['Reg_Date'].toString());
+                                    _memberRef
+                                        .child(snapshot.key)
+                                        .child('Reg_Date')
+                                        .set(DateFormat('yyyy-MM-dd')
+                                            .format(
+                                              date.add(
+                                                Duration(days: 30),
+                                              ),
+                                            )
+                                            .toString());
+                                    _memberRef
+                                        .child(snapshot.key)
+                                        .child('Fee')
+                                        .set('0.00');
+                                    Navigator.pop(context);
+                                  },
+                                  color: Color.fromRGBO(0, 179, 134, 1.0),
+                                ),
+                                DialogButton(
+                                  child: Text(
+                                    "Cancel",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  color: Colors.red,
+                                )
+                              ],
+                            ).show(),
                           },
                           func4: () =>
                               {_memberRef.child(snapshot.key).remove()},

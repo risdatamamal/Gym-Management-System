@@ -17,13 +17,13 @@ class CustomAppBar2 extends StatelessWidget with PreferredSizeWidget {
         iconSize: 28.0,
         onPressed: func,
       ),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.notifications_none),
-          iconSize: 28.0,
-          onPressed: () {},
-        ),
-      ],
+      // actions: [
+      //   IconButton(
+      //     icon: const Icon(Icons.notifications_none),
+      //     iconSize: 28.0,
+      //     onPressed: () {},
+      //   ),
+      // ],
     );
   }
 
