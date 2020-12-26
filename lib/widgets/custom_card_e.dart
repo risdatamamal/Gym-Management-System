@@ -1,10 +1,36 @@
 import 'package:flutter/material.dart';
 
-class CustomCardE extends StatelessWidget {
+class CustomCardE extends StatefulWidget {
+  final String eqname;
+  final String category;
+  final String servdate;
   final String imagePath;
-  CustomCardE(this.imagePath);
+  final Function func1;
+  final Function func2;
+
+  CustomCardE({
+    this.eqname,
+    this.category,
+    this.servdate,
+    this.imagePath,
+    this.func1,
+    this.func2,
+  });
+  @override
+  _CustomCardEState createState() => _CustomCardEState();
+}
+
+class _CustomCardEState extends State<CustomCardE> {
+  DateTime date;
+  Color timeColor;
   @override
   Widget build(BuildContext context) {
+    date = DateTime.parse(widget.servdate);
+    if (date.isBefore(DateTime.now())) {
+      timeColor = Colors.red;
+    } else {
+      timeColor = Colors.black;
+    }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -20,44 +46,30 @@ class CustomCardE extends StatelessWidget {
             children: [
               Flexible(
                 child: Image.asset(
-                  imagePath,
+                  widget.imagePath,
                   width: 64.0,
                 ),
               ),
               Column(
                 children: [
                   Text(
-                    'Adjustable Dumbell',
+                    widget.eqname,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0),
                   ),
                   Text(
-                    'ID: EQ42',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0),
-                  ),
-                  Text(
-                    'Date of Bought: 2019-09-02',
+                    'Category: ${widget.category}',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Last Service Date: 2020-06-25',
+                    'Service Date: ${widget.servdate}',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15.0),
-                  ),
-                  Text(
-                    'Next Service Date: 2021-01-25',
-                    style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
@@ -84,7 +96,7 @@ class CustomCardE extends StatelessWidget {
                       color: Colors.teal,
                     ),
                     tooltip: 'Service Equipment',
-                    onPressed: () => {},
+                    onPressed: widget.func1,
                   ),
                   Text(
                     'Service',
@@ -102,7 +114,7 @@ class CustomCardE extends StatelessWidget {
                       color: Colors.red,
                     ),
                     tooltip: 'Delete Equipment',
-                    onPressed: () => {},
+                    onPressed: widget.func2,
                   ),
                   Text(
                     'Delete',

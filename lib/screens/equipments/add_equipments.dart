@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
@@ -9,8 +12,16 @@ class AddEquipments extends StatefulWidget {
 }
 
 class _AddEquipmentsState extends State<AddEquipments> {
+  final referenceDatabase = FirebaseDatabase.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final TextEditingController eqnameController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController servtermController = TextEditingController();
+  final TextEditingController servdateController = TextEditingController()
+    ..text = 'Please select a Service Date.';
   @override
   Widget build(BuildContext context) {
+    final ref = referenceDatabase.reference();
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar2(Icons.arrow_back_ios, () {
@@ -56,26 +67,70 @@ class _AddEquipmentsState extends State<AddEquipments> {
                       MakeInput(
                         label: 'Equipment Name',
                         obscureText: false,
+                        controllerID: eqnameController,
                       ),
                       MakeInput(
                         label: 'Category',
                         obscureText: false,
-                      ),
-                      MakeInput(
-                        label: 'Bought Date',
-                        obscureText: false,
+                        controllerID: categoryController,
                       ),
                       MakeInput(
                         label: 'Service Terms',
                         obscureText: false,
+                        controllerID: servtermController,
                       ),
-                      MakeInput(
-                        label: 'Date of Last Service',
-                        obscureText: false,
-                      ),
-                      MakeInput(
-                        label: 'Next Service Date',
-                        obscureText: false,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Next Service Date',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          TextField(
+                            controller: servdateController,
+                            enabled: false,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0.0,
+                                horizontal: 10.0,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                            ),
+                          ),
+                          RaisedButton(
+                            child: Text('Pick a Date'),
+                            onPressed: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2001),
+                                lastDate: DateTime(2100),
+                              ).then((_dateTime) {
+                                setState(() {
+                                  servdateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(_dateTime);
+                                });
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -93,12 +148,22 @@ class _AddEquipmentsState extends State<AddEquipments> {
               ),
               child: FlatButton(
                 onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddEquipments(),
-                    ),
-                  ),
+                  ref
+                      .child(auth.currentUser.uid)
+                      .child('Equipments')
+                      .push()
+                      .set(
+                    {
+                      'Equipment_Name': eqnameController.text,
+                      'Category': categoryController.text,
+                      'Service_Terms': servtermController.text,
+                      'Service_Date': servdateController.text,
+                    },
+                  ).asStream(),
+                  eqnameController.clear(),
+                  categoryController.clear(),
+                  servtermController.clear(),
+                  servdateController.clear(),
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
