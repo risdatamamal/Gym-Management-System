@@ -71,7 +71,7 @@ Following instruction will give you an idea about how you can setup this project
 You need to have following software and languages to start this.<br>
 Latest, 
 * Android Studio
-and
+and / or
 * Visual Studio Code (I prefer to use VS Code along with Android Studio for coding which is much more simple and elegent when coding)
 * Flutter SDK
 
@@ -86,7 +86,7 @@ If you have installed all the things correctly then you can open up one of the e
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Following screenshots of the app will give you an idea about how this app works.<br><br>
+Following screenshots of the app will give you an idea about how this app works. **Please use 6 or more characters as the password when using the app**<br><br>
 <img src="screenshots/2.png" alt="ScreenShot2" width="200" height="400">
 <img src="screenshots/3.png" alt="ScreenShot3" width="200" height="400">
 <img src="screenshots/4.png" alt="ScreenShot4" width="200" height="400">
