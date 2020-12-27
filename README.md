@@ -118,7 +118,8 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-My Name - Indrajith
+My Name - U.L.D. Indrajith
+Github Profile - [https://github.com/uldindrajith](https://github.com/uldindrajith)
 
 Project Link: [https://github.com/MAD-assignment/Gym-Management-System](https://github.com/MAD-assignment/Gym-Management-System)
 
@@ -127,6 +128,6 @@ Project Link: [https://github.com/MAD-assignment/Gym-Management-System](https://
 * [Udemy Flutter Course for Begineers (Recommended)](https://www.udemy.com/course/flutter-bootcamp-with-dart/)
 * [Marcus Ng](https://www.youtube.com/channel/UC6Dy0rQ6zDnQuHQ1EeErGUA)
 * [The Flutter Way](https://www.youtube.com/channel/UCJm7i4g4z7ZGcJA_HKHLCVw)
-* [screenshots & Icons](https://www.iconfinder.com/families/microworld)
+* [Images](https://www.iconfinder.com/families/microworld)
 * [Stackoverflow](https://stackoverflow.com/)
 
