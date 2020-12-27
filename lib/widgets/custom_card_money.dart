@@ -23,16 +23,8 @@ class CustomCardMoney extends StatefulWidget {
 }
 
 class _CustomCardMoneyState extends State<CustomCardMoney> {
-  // DateTime date;
-  // Color timeColor;
   @override
   Widget build(BuildContext context) {
-    // date = DateTime.parse(widget.servdate);
-    // if (date.isBefore(DateTime.now())) {
-    //   timeColor = Colors.red;
-    // } else {
-    //   timeColor = Colors.black;
-    // }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -55,7 +47,7 @@ class _CustomCardMoneyState extends State<CustomCardMoney> {
               Column(
                 children: [
                   Text(
-                    'Title: ${widget.title}',
+                    widget.title,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -76,7 +68,8 @@ class _CustomCardMoneyState extends State<CustomCardMoney> {
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Details: ${widget.detail}',
+                    'Details:\n${widget.detail}',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,

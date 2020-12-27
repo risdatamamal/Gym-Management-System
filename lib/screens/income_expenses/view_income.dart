@@ -2,12 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
 import 'package:my_gym_manager/widgets/custom_card_money.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class ViewIncome extends StatefulWidget {
   @override
@@ -16,14 +14,14 @@ class ViewIncome extends StatefulWidget {
 
 class _ViewIncomeState extends State<ViewIncome> {
   DatabaseReference _incomeRef;
-  DateTime date;
   @override
   void initState() {
     final FirebaseDatabase database = FirebaseDatabase();
     _incomeRef = database
         .reference()
         .child(FirebaseAuth.instance.currentUser.uid)
-        .child('Income');
+        .child('Income')
+        .child('2020-12-27');
     super.initState();
   }
 
@@ -90,53 +88,53 @@ class _ViewIncomeState extends State<ViewIncome> {
                           title: snapshot.value['Title'].toString(),
                           amount: snapshot.value['Amount'].toString(),
                           date: snapshot.value['Date'].toString(),
-                          detail: snapshot.value['Income_Details'].toString(),
+                          detail: snapshot.value['Details'].toString(),
                           imagePath:
                               'assets/images/cash_flow_tranfer_finance-512.png',
-                          func1: () => {
-                            Alert(
-                              context: context,
-                              type: AlertType.warning,
-                              title: "Renew Service Date",
-                              desc:
-                                  "Are you sure you want to renew service date?",
-                              buttons: [
-                                DialogButton(
-                                  child: Text(
-                                    "Renew",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  onPressed: () {
-                                    date = DateTime.parse(snapshot
-                                        .value['Service_Date']
-                                        .toString());
-                                    _incomeRef
-                                        .child(snapshot.key)
-                                        .child('Service_Date')
-                                        .set(DateFormat('yyyy-MM-dd')
-                                            .format(
-                                              date.add(
-                                                Duration(days: 120),
-                                              ),
-                                            )
-                                            .toString());
-                                    Navigator.pop(context);
-                                  },
-                                  color: Color.fromRGBO(0, 179, 134, 1.0),
-                                ),
-                                DialogButton(
-                                  child: Text(
-                                    "Cancel",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                  color: Colors.red,
-                                )
-                              ],
-                            ).show(),
-                          },
+                          // func1: () => {
+                          //   Alert(
+                          //     context: context,
+                          //     type: AlertType.warning,
+                          //     title: "Renew Service Date",
+                          //     desc:
+                          //         "Are you sure you want to renew service date?",
+                          //     buttons: [
+                          //       DialogButton(
+                          //         child: Text(
+                          //           "Renew",
+                          //           style: TextStyle(
+                          //               color: Colors.white, fontSize: 20),
+                          //         ),
+                          //         onPressed: () {
+                          //           date = DateTime.parse(snapshot
+                          //               .value['Service_Date']
+                          //               .toString());
+                          //           _incomeRef
+                          //               .child(snapshot.key)
+                          //               .child('Service_Date')
+                          //               .set(DateFormat('yyyy-MM-dd')
+                          //                   .format(
+                          //                     date.add(
+                          //                       Duration(days: 120),
+                          //                     ),
+                          //                   )
+                          //                   .toString());
+                          //           Navigator.pop(context);
+                          //         },
+                          //         color: Color.fromRGBO(0, 179, 134, 1.0),
+                          //       ),
+                          //       DialogButton(
+                          //         child: Text(
+                          //           "Cancel",
+                          //           style: TextStyle(
+                          //               color: Colors.white, fontSize: 20),
+                          //         ),
+                          //         onPressed: () => Navigator.pop(context),
+                          //         color: Colors.red,
+                          //       )
+                          //     ],
+                          //   ).show(),
+                          // },
                           func2: () =>
                               {_incomeRef.child(snapshot.key).remove()},
                         );

@@ -166,12 +166,17 @@ class _AddMembersState extends State<AddMembers> {
               ),
               child: FlatButton(
                 onPressed: () => {
-                  ref.child(auth.currentUser.uid).child('Members').push().set(
+                  ref
+                      .child(auth.currentUser.uid)
+                      .child('Members')
+                      .child(phoneController.text)
+                      .set(
                     {
                       'Name': nameController.text,
                       'Address': addressController.text,
                       'Phone_Number': phoneController.text,
                       'Reg_Date': regdateController.text,
+                      'Payment_Date': regdateController.text,
                       'Workout_Type': wtController.text,
                       'Height': heightController.text,
                       'Fee': feeController.text,

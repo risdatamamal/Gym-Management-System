@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class CustomCardM extends StatefulWidget {
   final String name;
   final String phoneNumber;
-  final String date;
+  final String regdate;
+  final String paydate;
   final String fee;
   final String imagePath;
   final Function func1;
@@ -16,7 +17,8 @@ class CustomCardM extends StatefulWidget {
   CustomCardM(
       {this.name,
       this.phoneNumber,
-      this.date,
+      this.regdate,
+      this.paydate,
       this.fee,
       this.imagePath,
       this.func1,
@@ -28,16 +30,16 @@ class CustomCardM extends StatefulWidget {
 }
 
 class _CustomCardMState extends State<CustomCardM> {
-  //DateTime date;
-  //Color timeColor;
+  DateTime date;
+  Color timeColor;
   @override
   Widget build(BuildContext context) {
-    // date = DateTime.parse(widget.date);
-    // if (date.isBefore(DateTime.now())) {
-    //   timeColor = Colors.red;
-    // } else {
-    //   timeColor = Colors.black;
-    // }
+    date = DateTime.parse(widget.paydate);
+    if (date.isBefore(DateTime.now())) {
+      timeColor = Colors.red;
+    } else {
+      timeColor = Colors.black;
+    }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -73,10 +75,17 @@ class _CustomCardMState extends State<CustomCardM> {
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
+                  // Text(
+                  //   'Reg. Date: ${widget.regdate}',
+                  //   style: TextStyle(
+                  //       color: Colors.black,
+                  //       fontWeight: FontWeight.w400,
+                  //       fontSize: 15.0),
+                  // ),
                   Text(
-                    'Reg. Date: ${widget.date}',
+                    'Pay Date: ${widget.paydate}',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
@@ -138,24 +147,24 @@ class _CustomCardMState extends State<CustomCardM> {
                   ),
                 ],
               ),
-              // Column(
-              //   children: [
-              //     IconButton(
-              //       icon: Icon(
-              //         Icons.money,
-              //         color: Colors.teal,
-              //       ),
-              //       tooltip: 'Renew Fees',
-              //       onPressed: widget.func3,
-              //     ),
-              //     Text(
-              //       'Renew',
-              //       style: TextStyle(
-              //         color: Colors.teal,
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              Column(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.money,
+                      color: Colors.teal,
+                    ),
+                    tooltip: 'Renew Fees',
+                    onPressed: widget.func3,
+                  ),
+                  Text(
+                    'Renew',
+                    style: TextStyle(
+                      color: Colors.teal,
+                    ),
+                  ),
+                ],
+              ),
               Column(
                 children: [
                   IconButton(

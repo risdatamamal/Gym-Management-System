@@ -22,6 +22,7 @@ class _AddIncomeState extends State<AddIncome> {
   @override
   Widget build(BuildContext context) {
     final ref = referenceDatabase.reference();
+    DateTime today = DateTime.now();
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar2(Icons.arrow_back_ios, () {
@@ -147,11 +148,18 @@ class _AddIncomeState extends State<AddIncome> {
               ),
               child: FlatButton(
                 onPressed: () => {
-                  ref.child(auth.currentUser.uid).child('Income').push().set(
+                  ref
+                      .child(auth.currentUser.uid)
+                      .child('Income')
+                      .child(
+                        DateFormat('yyyy-MM-dd').format(today),
+                      )
+                      .push()
+                      .set(
                     {
                       'Title': titleController.text,
                       'Amount': amountController.text,
-                      'Income_Details': detailsController.text,
+                      'Details': detailsController.text,
                       'Date': dateController.text,
                     },
                   ).asStream(),

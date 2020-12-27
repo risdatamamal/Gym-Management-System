@@ -160,12 +160,17 @@ class _AddTrainersState extends State<AddTrainers> {
               ),
               child: FlatButton(
                 onPressed: () => {
-                  ref.child(auth.currentUser.uid).child('Trainers').push().set(
+                  ref
+                      .child(auth.currentUser.uid)
+                      .child('Trainers')
+                      .child(phoneController.text)
+                      .set(
                     {
                       'Name': nameController.text,
                       'Address': addressController.text,
                       'Phone_Number': phoneController.text,
                       'Reg_Date': regdateController.text,
+                      'Pay_Date': regdateController.text,
                       'Qualifications': qualificationController.text,
                       'Salary': salaryController.text,
                     },

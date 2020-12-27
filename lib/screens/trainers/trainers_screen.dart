@@ -19,7 +19,10 @@ class TrainersScreen extends StatefulWidget {
 
 class _TrainersScreenState extends State<TrainersScreen> {
   DatabaseReference _trainerRef;
+  DatabaseReference _expenseRef;
   DateTime date;
+  DateTime today;
+  String salary;
   @override
   void initState() {
     final FirebaseDatabase database = FirebaseDatabase();
@@ -27,6 +30,10 @@ class _TrainersScreenState extends State<TrainersScreen> {
         .reference()
         .child(FirebaseAuth.instance.currentUser.uid)
         .child('Trainers');
+    _expenseRef = database
+        .reference()
+        .child(FirebaseAuth.instance.currentUser.uid)
+        .child('Expense');
     super.initState();
   }
 
@@ -91,7 +98,7 @@ class _TrainersScreenState extends State<TrainersScreen> {
                           name: snapshot.value['Name'].toString(),
                           phoneNumber:
                               snapshot.value['Phone_Number'].toString(),
-                          date: snapshot.value['Reg_Date'].toString(),
+                          paydate: snapshot.value['Pay_Date'].toString(),
                           salary: snapshot.value['Salary'].toString(),
                           imagePath:
                               'assets/images/baby_child_children_boy-512.png',
@@ -119,10 +126,13 @@ class _TrainersScreenState extends State<TrainersScreen> {
                                   ),
                                   onPressed: () {
                                     date = DateTime.parse(
-                                        snapshot.value['Reg_Date'].toString());
+                                        snapshot.value['Pay_Date'].toString());
+                                    today = DateTime.now();
+                                    salary =
+                                        snapshot.value['Salary'].toString();
                                     _trainerRef
                                         .child(snapshot.key)
-                                        .child('Reg_Date')
+                                        .child('Pay_Date')
                                         .set(DateFormat('yyyy-MM-dd')
                                             .format(
                                               date.add(
@@ -130,10 +140,30 @@ class _TrainersScreenState extends State<TrainersScreen> {
                                               ),
                                             )
                                             .toString());
-                                    _trainerRef
-                                        .child(snapshot.key)
-                                        .child('Salary')
-                                        .set('0.00');
+                                    // _memberRef
+                                    //     .child(snapshot.key)
+                                    //     .child('Fee')
+                                    //     .set('0.00');
+                                    _expenseRef
+                                        .child(
+                                          DateFormat('yyyy-MM-dd')
+                                              .format(today),
+                                        )
+                                        .push()
+                                        .set(
+                                      {
+                                        'Title':
+                                            '${snapshot.value['Name'].toString()}\'s Trainer Fee',
+                                        'Amount': salary,
+                                        'Date': DateFormat('yyyy-MM-dd').format(
+                                          date.add(
+                                            Duration(days: 30),
+                                          ),
+                                        ),
+                                        'Details':
+                                            'Name: ${snapshot.value['Name'].toString()}\nID: ${snapshot.key}\nTrainer\'s Monthly Fee',
+                                      },
+                                    );
                                     Navigator.pop(context);
                                   },
                                   color: Color.fromRGBO(0, 179, 134, 1.0),

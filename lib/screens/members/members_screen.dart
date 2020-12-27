@@ -18,7 +18,10 @@ class MembersScreen extends StatefulWidget {
 
 class _MembersScreenState extends State<MembersScreen> {
   DatabaseReference _memberRef;
+  DatabaseReference _incomeRef;
   DateTime date;
+  DateTime today;
+  String fee;
   @override
   void initState() {
     final FirebaseDatabase database = FirebaseDatabase();
@@ -26,6 +29,10 @@ class _MembersScreenState extends State<MembersScreen> {
         .reference()
         .child(FirebaseAuth.instance.currentUser.uid)
         .child('Members');
+    _incomeRef = database
+        .reference()
+        .child(FirebaseAuth.instance.currentUser.uid)
+        .child('Income');
     super.initState();
   }
 
@@ -90,7 +97,8 @@ class _MembersScreenState extends State<MembersScreen> {
                           name: snapshot.value['Name'].toString(),
                           phoneNumber:
                               snapshot.value['Phone_Number'].toString(),
-                          date: snapshot.value['Reg_Date'].toString(),
+                          regdate: snapshot.value['Reg_Date'].toString(),
+                          paydate: snapshot.value['Payment_Date'].toString(),
                           fee: snapshot.value['Fee'].toString(),
                           imagePath:
                               'assets/images/baby_child_children_boy-512.png',
@@ -117,11 +125,14 @@ class _MembersScreenState extends State<MembersScreen> {
                                         color: Colors.white, fontSize: 20),
                                   ),
                                   onPressed: () {
-                                    date = DateTime.parse(
-                                        snapshot.value['Reg_Date'].toString());
+                                    date = DateTime.parse(snapshot
+                                        .value['Payment_Date']
+                                        .toString());
+                                    today = DateTime.now();
+                                    fee = snapshot.value['Fee'].toString();
                                     _memberRef
                                         .child(snapshot.key)
-                                        .child('Reg_Date')
+                                        .child('Payment_Date')
                                         .set(DateFormat('yyyy-MM-dd')
                                             .format(
                                               date.add(
@@ -129,10 +140,30 @@ class _MembersScreenState extends State<MembersScreen> {
                                               ),
                                             )
                                             .toString());
-                                    _memberRef
-                                        .child(snapshot.key)
-                                        .child('Fee')
-                                        .set('0.00');
+                                    // _memberRef
+                                    //     .child(snapshot.key)
+                                    //     .child('Fee')
+                                    //     .set('0.00');
+                                    _incomeRef
+                                        .child(
+                                          DateFormat('yyyy-MM-dd')
+                                              .format(today),
+                                        )
+                                        .push()
+                                        .set(
+                                      {
+                                        'Title':
+                                            '${snapshot.value['Name'].toString()}\'s Member Fee',
+                                        'Amount': fee,
+                                        'Date': DateFormat('yyyy-MM-dd').format(
+                                          date.add(
+                                            Duration(days: 30),
+                                          ),
+                                        ),
+                                        'Details':
+                                            '\nName: ${snapshot.value['Name'].toString()}\nID: ${snapshot.key}\nMember\'s Monthly Fee',
+                                      },
+                                    );
                                     Navigator.pop(context);
                                   },
                                   color: Color.fromRGBO(0, 179, 134, 1.0),
