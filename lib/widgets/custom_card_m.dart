@@ -75,13 +75,6 @@ class _CustomCardMState extends State<CustomCardM> {
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),
-                  // Text(
-                  //   'Reg. Date: ${widget.regdate}',
-                  //   style: TextStyle(
-                  //       color: Colors.black,
-                  //       fontWeight: FontWeight.w400,
-                  //       fontSize: 15.0),
-                  // ),
                   Text(
                     'Pay Date: ${widget.paydate}',
                     style: TextStyle(

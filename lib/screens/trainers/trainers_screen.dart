@@ -140,10 +140,6 @@ class _TrainersScreenState extends State<TrainersScreen> {
                                               ),
                                             )
                                             .toString());
-                                    // _memberRef
-                                    //     .child(snapshot.key)
-                                    //     .child('Fee')
-                                    //     .set('0.00');
                                     _expenseRef
                                         .child(
                                           DateFormat('yyyy-MM-dd')

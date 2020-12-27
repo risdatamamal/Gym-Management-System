@@ -73,7 +73,7 @@ class _CustomCardTState extends State<CustomCardT> {
                   Text(
                     'Pay Date: ${widget.paydate}',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: timeColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 15.0),
                   ),

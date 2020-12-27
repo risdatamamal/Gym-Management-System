@@ -140,10 +140,6 @@ class _MembersScreenState extends State<MembersScreen> {
                                               ),
                                             )
                                             .toString());
-                                    // _memberRef
-                                    //     .child(snapshot.key)
-                                    //     .child('Fee')
-                                    //     .set('0.00');
                                     _incomeRef
                                         .child(
                                           DateFormat('yyyy-MM-dd')
@@ -161,7 +157,7 @@ class _MembersScreenState extends State<MembersScreen> {
                                           ),
                                         ),
                                         'Details':
-                                            '\nName: ${snapshot.value['Name'].toString()}\nID: ${snapshot.key}\nMember\'s Monthly Fee',
+                                            'Name: ${snapshot.value['Name'].toString()}\nID: ${snapshot.key}\nMember\'s Monthly Fee',
                                       },
                                     );
                                     Navigator.pop(context);

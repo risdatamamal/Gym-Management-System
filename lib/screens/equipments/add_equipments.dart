@@ -18,7 +18,7 @@ class _AddEquipmentsState extends State<AddEquipments> {
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController servtermController = TextEditingController();
   final TextEditingController servdateController = TextEditingController()
-    ..text = 'Please select a Service Date.';
+    ..text = 'Please select a Service / Bought Date.';
   @override
   Widget build(BuildContext context) {
     final ref = referenceDatabase.reference();
@@ -83,7 +83,7 @@ class _AddEquipmentsState extends State<AddEquipments> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Next Service Date',
+                            'Next Service Date / Bought Date',
                             style: TextStyle(
                               fontSize: 15.0,
                               fontWeight: FontWeight.w700,

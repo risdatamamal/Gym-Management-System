@@ -21,16 +21,8 @@ class CustomCardE extends StatefulWidget {
 }
 
 class _CustomCardEState extends State<CustomCardE> {
-  // DateTime date;
-  // Color timeColor;
   @override
   Widget build(BuildContext context) {
-    // date = DateTime.parse(widget.servdate);
-    // if (date.isBefore(DateTime.now())) {
-    //   timeColor = Colors.red;
-    // } else {
-    //   timeColor = Colors.black;
-    // }
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(8.0),
@@ -67,7 +59,8 @@ class _CustomCardEState extends State<CustomCardE> {
                         fontSize: 15.0),
                   ),
                   Text(
-                    'Bought Date: ${widget.servdate}',
+                    'Bought / Next Service Date: \n${widget.servdate}',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -87,48 +80,6 @@ class _CustomCardEState extends State<CustomCardE> {
               ),
             ],
           ),
-          // Divider(color: Colors.black),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //   children: [
-          //     Column(
-          //       children: [
-          //         IconButton(
-          //           icon: Icon(
-          //             Icons.money,
-          //             color: Colors.teal,
-          //           ),
-          //           tooltip: 'Service Equipment',
-          //           onPressed: widget.func1,
-          //         ),
-          //         Text(
-          //           'Service',
-          //           style: TextStyle(
-          //             color: Colors.teal,
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //     Column(
-          //       children: [
-          //         IconButton(
-          //           icon: Icon(
-          //             Icons.delete,
-          //             color: Colors.red,
-          //           ),
-          //           tooltip: 'Delete Equipment',
-          //           onPressed: widget.func2,
-          //         ),
-          //         Text(
-          //           'Delete',
-          //           style: TextStyle(
-          //             color: Colors.red,
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );
