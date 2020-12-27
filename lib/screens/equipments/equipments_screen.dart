@@ -61,7 +61,7 @@ class _EquipmentsScreenState extends State<EquipmentsScreen> {
                         decoration: InputDecoration(
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
-                          hintText: 'i.e Dumb bell / 2356',
+                          hintText: 'Search',
                           prefixIcon: Icon(
                             Icons.search,
                           ),

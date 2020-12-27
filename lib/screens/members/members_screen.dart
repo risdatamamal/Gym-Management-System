@@ -61,7 +61,7 @@ class _MembersScreenState extends State<MembersScreen> {
                         decoration: InputDecoration(
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
-                          hintText: 'i.e Santha Rajapaksha / 2356',
+                          hintText: 'Search',
                           prefixIcon: Icon(
                             Icons.search,
                           ),

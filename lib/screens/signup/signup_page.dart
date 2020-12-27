@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:my_gym_manager/animation/fade_animation.dart';
 import 'package:my_gym_manager/authentication/authentication_service.dart';
 import 'package:my_gym_manager/config/palette.dart';
-import 'package:my_gym_manager/screens/login/login_page.dart';
 import 'package:my_gym_manager/widgets/make_input.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignupPage extends StatelessWidget {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController gymnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController password1Controller = TextEditingController();
   final TextEditingController password2Controller = TextEditingController();
@@ -129,12 +130,7 @@ class SignupPage extends StatelessWidget {
                                 email: emailController.text.trim(),
                                 password: password1Controller.text.trim(),
                               );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginPage(),
-                            ),
-                          );
+                          Navigator.pop(context);
                         } else {
                           Alert(
                             context: context,

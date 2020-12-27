@@ -62,7 +62,7 @@ class _TrainersScreenState extends State<TrainersScreen> {
                         decoration: InputDecoration(
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
-                          hintText: 'i.e Lazar Angelov / 1',
+                          hintText: 'Search',
                           prefixIcon: Icon(
                             Icons.search,
                           ),
