@@ -43,8 +43,9 @@
 </p>
 
 <p align='center'>
-This is a Flutter based Android Application Development project done onbehalf of the Mobile Application Development Module. First of all please bare following things in your mind,    
+This is a Flutter based Android Application Development project done onbehalf of the Mobile Application Development Module. First of all please bare following things in your mind,
 
+* Only the Android Development is considered no iOS platform developed. 
 * This App will demonstrate basic functionalities of what I have learned. (First time Flutter Learner)
 * This is not a fully completed app.
 * Most of the functions are yet be learned and applied. But you will be able to do some basic functionalities in the app. :smile:
@@ -67,8 +68,9 @@ Following instruction will give you an idea about how you can setup this project
 
 ### Prerequisites
 
-You need to have following software and languages to start this.
-* Latest Android Studio
+You need to have following software and languages to start this.<br>
+Latest, 
+* Android Studio
 and
 * Visual Studio Code (I prefer to use VS Code along with Android Studio for coding which is much more simple and elegent when coding)
 * Flutter SDK
@@ -118,7 +120,7 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-My Name - U.L.D. Indrajith
+My Name - U.L.D. Indrajith<br>
 Github Profile - [https://github.com/uldindrajith](https://github.com/uldindrajith)
 
 Project Link: [https://github.com/MAD-assignment/Gym-Management-System](https://github.com/MAD-assignment/Gym-Management-System)
