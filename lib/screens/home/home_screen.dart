@@ -32,9 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    StatsGrid('Income', 'Rs. 13,500.00',
+                    StatsGrid('Income', 'Rs. 4,500.00',
                         'assets/images/increase_presentation_Profit_growth-512.png'),
-                    StatsGrid('Expense', 'Rs. 4,500.00',
+                    StatsGrid('Expense', 'Rs. 1,500.00',
                         'assets/images/decrease_presentation_down_loss-512.png'),
                   ],
                 ),
@@ -42,16 +42,16 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  StatsGrid('Members', '35',
+                  StatsGrid('Members', '3',
                       'assets/images/family_tree_members_people-512.png'),
-                  StatsGrid('Trainers', '5',
+                  StatsGrid('Trainers', '2',
                       'assets/images/gym_coach_trainer_fitness-512.png'),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  StatsGrid('Equipments', '12',
+                  StatsGrid('Equipments', '1',
                       'assets/images/dumbbell_gym_fitness_exercise-512.png'),
                 ],
               ),

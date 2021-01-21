@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_gym_manager/config/palette.dart';
 import 'package:my_gym_manager/screens/drawer.dart';
 import 'package:my_gym_manager/widgets/custom_app_bar2.dart';
@@ -14,14 +15,17 @@ class ViewIncome extends StatefulWidget {
 
 class _ViewIncomeState extends State<ViewIncome> {
   DatabaseReference _incomeRef;
+  DateTime date;
   @override
   void initState() {
+    date = DateTime.now();
+    String ndate = DateFormat('yyyy-MM-dd').format(date).toString();
     final FirebaseDatabase database = FirebaseDatabase();
     _incomeRef = database
         .reference()
         .child(FirebaseAuth.instance.currentUser.uid)
         .child('Income')
-        .child('2020-12-27');
+        .child(ndate);
     super.initState();
   }
 
