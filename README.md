@@ -115,7 +115,8 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-My Name - U.L.D. Indrajith<br>
+My Name - Risda Tamam A.<br>
+
 Github Profile - [https://github.com/risdatamamal](https://github.com/risdatamamal)
 
 Project Link: [https://github.com/risdatamamal/Gym-Management-System](https://github.com/risdatamamal/Gym-Management-System)
