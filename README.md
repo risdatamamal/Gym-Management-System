@@ -121,9 +121,9 @@ Distributed under the MIT License.
 ## Contact
 
 My Name - U.L.D. Indrajith<br>
-Github Profile - [https://github.com/uldindrajith](https://github.com/uldindrajith)
+Github Profile - [https://github.com/risdatamamal](https://github.com/risdatamamal)
 
-Project Link: [https://github.com/MAD-assignment/Gym-Management-System](https://github.com/MAD-assignment/Gym-Management-System)
+Project Link: [https://github.com/risdatamamal/Gym-Management-System](https://github.com/risdatamamal/Gym-Management-System)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
